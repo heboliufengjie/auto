@@ -13,9 +13,3 @@ Creating a new branch is quicky.
 Creating a new branch is quicky.
 Creating a new branch is quicky.
 Creating a new branch is quicky.
-Creating a new branch is quicky.
-Creating a new branch is quicky.
-Creating a new branch is quicky.
-Creating a new branch is quicky
-1111111111111111111111111111111111111111111111
-.
