@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com" />
+<meta name="copyright" content="智能社 - zhinengshe.com" />
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+#div1 { float:left;}
+#div1 .active{ background:yellow;}
+#div1 div{display:none;width:300px; height:200px; background:#ccc;}
+</style>
+<script>
+
+window.onload = function(){
+	var oDiv = document.getElementById("div1");
+	var oPrev = document.getElementById("previous");
+	var oNext = document.getElementById("next");
+	var aBtn = oDiv.getElementsByTagName("input");
+	var aDiv = oDiv.getElementsByTagName("div");
+
+	var iNow = 0;
+	
+	
+	var　timer = null;
+	
+	
+	timer = setInterval(next,100);
+	
+	oDiv.onmouseover = function(){
+		clearInterval(timer);	
+	};
+	oDiv.onmouseout  = function(){
+		timer = setInterval(next,100);
+	};
+	
+	function next(){
+		iNow++;
+		
+		if(iNow == 3){
+			iNow = 0;
+		}
+		tab();
+	}
+	
+	
+	oPrev.onclick = function(){
+		iNow--;
+		
+		if(iNow == -1){
+			iNow = 2;
+		}
+		tab();
+	};
+	
+	//下一个
+	oNext.onclick = next;
+	for(var i = 0; i < aBtn.length; i++){
+		aBtn[i].index = i;
+		aBtn[i].onclick = function(){
+			
+			iNow = this.index;
+			tab();
+		};
+	}
+	
+	
+	function tab(){
+		
+		document.title = iNow;
+		for(var i = 0; i < aBtn.length; i++){
+			aBtn[i].className = "";	
+			aDiv[i].style.display = "none";
+		}
+		
+		//this.className = "active";
+		aBtn[iNow].className = "active";
+		aDiv[iNow].style.display = "block";		
+	}
+	
+	
+	
+};
+
+</script>
+</head>
+
+<body>
+
+<div id="div1">
+	<a id="previous" href="javascript:;">上一个</a>
+	<input class="active" type="button" value="aaaa" />
+	<input type="button" value="bbbb" />
+	<input type="button" value="cccc" />
+	<a id="next" href="javascript:;">下一个</a>
+    <div style="display:block;">aaaaa</div>
+    <div>bbbbb</div>
+    <div>ccccc</div>
+    
+</div>
+
+</body>
+</html>
