@@ -3,6 +3,7 @@
 https://github.com/nswbmw/N-blog/blob/master/book/4.2%20%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C.md
 在 myblog 运行 supervisor --harmony index 不需要 手动重启程序
 
+rm -rf .git
 -----------------------------------------------------
 http://localhost:3000/posts
 http://localhost:3000/signout
