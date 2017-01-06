@@ -1,6 +1,8 @@
+//http://tool.chinaz.com/Tools/unixtime.aspx
+
 var currentTimeActive = 1;
 var unixTimer = 0;
-//http://tool.chinaz.com/Tools/unixtime.aspx
+
 function unix2human() {
     var a = new Date(document.getElementById("unix2beijing").value * 1000);
     beijingTimeValue = a.getFullYear() + "/" + (a.getMonth() + 1) + "/" + a.getDate() + " " + a.getHours() + ":" + a.getMinutes() + ":" + a.getSeconds();
