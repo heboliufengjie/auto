@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script type="text/javascript">
+        function Animal(name) {
+            this.name = name;
+            this.showName = function() {
+                console.log(this.name);
+            };
+        }
+
+        function Cat(name) {
+            console.log('this', this)
+            Animal.call(this, name);
+        }
+
+        Cat.prototype = new Animal();
+
+        function Dog(name) {
+            Animal.apply(this, name);
+        }
+        Dog.prototype = new Animal();
+
+        var cat = new Cat("Black Cat"); //call必须是object
+
+        var dog = new Dog(["Black Dog"]); //apply必须是array
+
+        cat.showName();
+        dog.showName();
+
+        console.log(cat instanceof Animal);
+        console.log(dog instanceof Animal);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
