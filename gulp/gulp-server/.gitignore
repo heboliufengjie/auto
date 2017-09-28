@@ -1,0 +1,8 @@
+/runtime
+.DS_Store
+/.idea
+/.sass-cache
+/plugin-service/log/*.log
+/static/
+/static/node_modules/
+/node_modules/
