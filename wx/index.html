@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>我用大数据招精英，好机会等你来加入！</title>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+       <style type="text/css">
+       @charset "utf-8";
+
+        body, html {
+          margin: 0;
+          padding: 0;
+        }
+
+        .layer {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center center;
+           z-index: 2;
+          background-image: url("images/moblie_layer.jpg");
+        }
+
+        .wrap {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center center;
+          background-image: url("images/moblie_bg.jpg");
+        }
+
+       </style>
+
+    </head>
+    <body>
+        <div class="layer" id="layer"></div>
+        <div class="wrap"></div>
+       <!--  <img style="position: absolute;z-index: -1" id="img" src="images/icon.jpg"/> -->
+    </body>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js
+    "></script>
+    <script type="text/javascript" src="http://img.ifchange.com/wezhaopin/js/biz/weixin-jssdk.js"></script>
+    <script type="text/javascript">
+    (function(){
+    //获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+    var link = location.href;
+    window.WX_DEBUG = true;
+    var oImg = 'http://heboliufengjie.github.io/wx/images/icon.jpg';
+    //var oImg = document.getElementById('img').getAttribute('src');
+
+    wx.onMenuShareTimeline({
+        title: '我用大数据招精英，好机会等你来加入！', // 分享标题
+        link: link, // 分享链接
+        imgUrl: oImg, // 分享图标
+        success: function () {
+            // 用户确认分享后执行的回调函数
+            alert('分享成功')
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            alert('取消分享')
+        }
+    });
+    //获取“分享给朋友”按钮点击状态及自定义分享内容接口
+    wx.onMenuShareAppMessage({
+        title: '我用大数据招精英，好机会等你来加入！',
+        desc: 'e成数千万美元融资成功，一大波好机会来袭',
+        link: link, // 分享链接
+        imgUrl: oImg, // 分享图标
+        success: function () {
+            // 用户确认分享后执行的回调函数
+            alert('分享成功2')
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            alert('取消分享2')
+        }
+    });
+
+    var oLayer = document.getElementById('layer');
+    oLayer.addEventListener('touchstart', function(event) {
+        oLayer.style.display = 'none'
+    })
+    setTimeout(function(){
+      oLayer.style.display = 'none'
+    },2000)
+    })();
+    </script>
+</html>
