@@ -18,10 +18,14 @@ import { Computed } from './Computed'
 
 
 avalon.define = function(definition) {
+    //console.log('definition',definition)
     var $id = definition.$id
+    //console.log('$id',$id)
     if (!$id) {
         avalon.error('vm.$id must be specified')
     }
+
+   // console.log('avalon.vmodels[$id]',avalon.vmodels[$id])
     if (avalon.vmodels[$id]) {
         avalon.warn('error:[' + $id + '] had defined!')
     }
@@ -34,10 +38,15 @@ avalon.define = function(definition) {
  */
 
 export function IProxy(definition, dd) {
+    //console.log('definition>>>>',definition)
+    // console.log('this',this)
+
     avalon.mix(this, definition)
     avalon.mix(this, $$skipArray)
     this.$hashcode = avalon.makeHashCode('$')
+    //console.log(' this.$hashcode', this.$hashcode)
     this.$id = this.$id || this.$hashcode
+    console.log('this.$id',this.$id)
     this.$events = {
         __dep__: dd || new Mutation(this.$id)
     }
@@ -61,8 +70,14 @@ export function IProxy(definition, dd) {
 }
 
 platform.modelFactory = function modelFactory(definition, dd) {
+    
+    /*
+    若没有传入computed 则返回{}
+    并删除definition中的$computed数据
+    */
     var $computed = definition.$computed || {}
     delete definition.$computed
+
     var core = new IProxy(definition, dd)
     var $accessors = core.$accessors
     var keys = []

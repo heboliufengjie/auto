@@ -7,8 +7,12 @@ export function avalon(el) {
         return new avalon.init(el)
 }
 
+//console.log('document',document)
+//console.log('root',root)
+
 avalon.init = function (el) {
-        this[0] = this.element = el
+    console.log('el',el)
+    this[0] = this.element = el
 }
 
 avalon.fn = avalon.prototype = avalon.init.prototype

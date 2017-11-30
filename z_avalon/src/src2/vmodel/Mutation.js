@@ -14,6 +14,9 @@ import {
 */
 export let obid = 1
 export function Mutation(expr, value, vm) { //构造函数
+    console.log('expr>>>>',expr)
+    console.log('value',value)
+    console.log('vm',vm)
     this.expr = expr
     if (value) {
         var childVm = platform.createProxy(value, this)

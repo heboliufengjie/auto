@@ -8,6 +8,7 @@
  
  removed  <--  <--  <--  <--  <--  <--  <--  <--  <--  <--  <--  added 
  */
+ 
 export function Cache(maxLength) {
     // 标识当前缓存数组的大小
     this.size = 0
