@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>面试题</title>
+
+<script>
+//https://juejin.im/post/5e77888ff265da57187c7278?utm_source=gold_browser_extension#heading-25
+Function.prototype.apply2= function(ctx){
+	var ctx = ctx ||window
+
+	ctx.fn = this
+
+	var ret;
+	//判断是否有第二个参数
+	if(arguments[1]){
+		ret = ctx.fn(arguments[1])
+	}else{
+		ret = ctx.fn()
+	}
+
+	delete ctx.fn
+	return ret
+}
+
+Function.prototype.call2=function(ctx){
+	var ctx = ctx ||window
+	ctx.fn = this
+	var ret
+	var args = [...arguments].slice(1)
+	ret = ctx.fn(...args)
+
+	delete ctx.fn
+	return ret
+}
+
+
+Function.prototype.bind2= function(ctx){
+	var _this = this
+	var args = [...arguments].slice(1)
+	
+	return function F(){
+		if(this instanceof F){
+			return _this.apply(this,args.concat(...arguments))
+		}
+		return _this.apply(ctx,args.concat(...arguments))
+	}
+}
+
+
+var obj={
+	a:1,
+	b:2
+}
+
+function add(){
+	return this.a+this.b
+}
+
+function test(x,y){
+	return x-y
+}
+
+// console.log('add.apply2(obj)',add.apply2(obj))
+//console.log('add.call2(obj)',add.call2(obj))
+//console.log('add.test()',test.call2(this,3,2))
+console.log('add.test()',add.bind2(obj)())
+
+
+
+</script>
+</head>
+
+<body>
+
+</body>
+</html>

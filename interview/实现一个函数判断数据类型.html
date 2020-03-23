@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>面试题</title>
+
+<script>
+//https://juejin.im/post/5db556376fb9a0207a6ddce7#heading-39
+function getType(obj) {
+
+	if(obj ===null){
+		return Strintg(obj)
+	}
+
+	if(typeof obj ==='object'){
+		return Object.prototype.toString.call(obj).replace('[object','').replace(']','').toLowerCase()
+	}else{
+		return typeof obj
+	}
+}
+
+console.log('getType(new Date())',getType(new Date()))
+
+</script>
+</head>
+
+<body>
+
+</body>
+</html>

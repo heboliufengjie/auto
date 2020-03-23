@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>彩票</title>
+
+<script>
+//https://juejin.im/post/5e77888ff265da57187c7278?utm_source=gold_browser_extension#heading-25
+function ajax(options){
+	//
+	//默认get
+	let method= options.method ||'get',
+		//get 请求参数
+		params = options.params
+		//post 参数
+		data = options.data
+		url = options.url+(params? '?'+Object.keys(params).map(key=>key+'='params[key]).join('&'):''),
+		async= options.async ===false ?false :true,
+		success=options.success,
+		headers= options.headers;
+
+	let xhr;
+
+	//创建xhr
+	if(window.XHLHttpRequest){
+		xhr = new XHLHttpRequest();
+	}else{
+		xhr = new ActiveXObject('Micrsoft.XHLHTTP')
+	}
+
+
+	xhr.onreadystatechange= function(){
+		if(xhr.readyState ===4 && xhr.status ===200){
+			success && success(xhr.responseText)
+		}
+	}
+
+	xhr.open(method,url,async)
+
+	if(headers){
+		Object.keys(headers).forEach(key =>xhr.setRequestHeader(key,headers[key]))
+	}
+
+
+	method ==='GET' ?xhr.send():xhr.send(data)
+
+}
+
+
+</script>
+</head>
+
+<body>
+
+</body>
+</html>
